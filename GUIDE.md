@@ -24,9 +24,13 @@ Which is exactly why this guide exists — so you don't make the same mistakes.
 By the end of this, you will know:
 
 - How to create songs with AI (fast)
+- How to write lyrics using AI tools
 - How to upload them to streaming platforms
 - How to avoid getting banned
 - How to scale into multiple artists
+- How to promote on TikTok, Instagram, YouTube, and Reddit
+- How to create free promo videos with no editing skills
+- How to handle copyright and legal basics
 - How to turn this into real income
 
 ---
@@ -41,8 +45,36 @@ This is your distribution engine. SoundOn puts your music on:
 - Apple Music
 - TikTok
 - Instagram
+- YouTube Music
+- Amazon Music
+- Deezer
+- And more
 
 > **Important:** Approval can take time. While you wait — start creating music immediately.
+
+### Set Up Spotify for Artists
+
+Once your first song goes live on Spotify:
+
+1. Go to **artists.spotify.com** and claim your artist profile
+2. Add a bio, profile photo, and header image
+3. Use the **"Upcoming Release"** feature to pitch songs to Spotify's editorial playlists (do this at least 7 days before release)
+4. Check your analytics weekly — see which songs get saves, which playlists you land on
+
+> **Why this matters:** Spotify's algorithm recommends music based on saves, playlist adds, and listen-through rate. Claiming your profile and pitching releases is free and can land you on algorithmic playlists like Discover Weekly and Release Radar.
+
+### Alternative Distributors
+
+SoundOn is the recommendation, but if you have issues, these also work:
+
+| Distributor | Cost | Notes |
+|------------|------|-------|
+| SoundOn | Free | Best for TikTok integration |
+| DistroKid | $22.99/year | Unlimited uploads, fast delivery |
+| TuneCore | $9.99/single | Per-release pricing |
+| Amuse | Free tier | Slower delivery, limited features |
+
+> Stick with SoundOn unless you have a specific reason to switch. The TikTok integration alone makes it worth it.
 
 ---
 
@@ -89,6 +121,22 @@ Dark cinematic villain arc, deep voice, powerful chorus
 ```
 
 Keep it simple. Don't over-engineer.
+
+### Using AI to Write Better Lyrics
+
+Don't write lyrics from scratch — use AI to help:
+
+1. **ChatGPT or Claude:** Ask it to write lyrics in a specific style. Example prompt: *"Write a 2-verse, 1-chorus emotional breakup song. Female perspective. Short lines. Made for TikTok."*
+2. **Iterate:** If the first draft is close, ask it to revise specific lines
+3. **Steal structures:** Find songs you like, feed the structure (not the words) to AI and ask for new lyrics in that format
+
+> **Pro tip:** Ask AI to write lyrics with a strong "hook line" in the first 5 seconds. That's what makes people stop scrolling on TikTok.
+
+### Song Length
+
+- **Ideal length: 2–3 minutes.** Streaming platforms count a "stream" after ~30 seconds of listening. Shorter songs = more replays = more streams.
+- **For TikTok clips:** The hook needs to hit in the first 10–15 seconds. Front-load the emotion.
+- **Suno tip:** If a song generates at 4+ minutes, you can use the "Extend" feature to create shorter versions, or just trim in any free audio editor (Audacity, CapCut).
 
 ### Hit Rate
 
@@ -144,6 +192,15 @@ Each artist needs at minimum:
 | Artist 3 | Dark cinematic / deep voice |
 
 > **Bios and backstories are optional but help.** A simple name + genre identity is enough to start.
+
+### Naming Your Artists
+
+Tips for choosing artist names:
+- **Google the name first** — make sure no real artist already uses it. Duplicate names cause confusion on Spotify/Apple Music and can get your profile merged or flagged.
+- **Keep it short and memorable** — 1–2 words max
+- **Match the vibe** — a dark cinematic artist shouldn't be named "Sunny Days"
+- **Avoid special characters** — stick to letters. Makes it easier to search and share.
+- **Check Spotify/Apple Music** — search the name before you commit. If it's taken, pick something else.
 
 ---
 
@@ -221,12 +278,26 @@ Why:
 - Not suspicious
 - Enough content to generate streams
 
-### Cover Art (Simple Canva Workflow)
+### Cover Art (Canva AI Workflow)
 
-1. Open Canva
-2. Create custom size: **3000 x 3000 px**
-3. Add: background gradient + artist name + album title
-4. Keep it clean — don't overdesign
+Canva has a built-in **AI image generator** — you don't need Midjourney or DALL-E for cover art.
+
+**Step-by-step:**
+
+1. Open Canva → Create custom size: **3000 x 3000 px**
+2. Go to **Elements** → type a prompt in the search bar → click **Generate**
+3. Canva's AI will create images based on your prompt (example: "a donut in space", "neon city at night", "abstract smoke and fire")
+4. Pick the one you like and place it as your background
+5. Go to **Text** → choose a font that matches your artist's vibe
+6. Add your **artist name** in a stylish font (script fonts work great for emotional/indie artists, bold sans-serif for hype/gym artists)
+7. Add the **album name** underneath in a smaller, cleaner font
+8. Download as PNG
+
+**Tips:**
+- Match the art style to the genre — dark moody art for dark artists, bright/colorful for pop
+- Keep text readable — don't let it blend into the background
+- Use the same font/color scheme across all albums for one artist to build brand consistency
+- Canva's free tier includes the AI generator — no need to pay
 
 > *Your SoundOn promo page lets you set up artist profiles, add social links, choose song previews, and customize your bio. Each artist gets their own page.*
 
@@ -245,6 +316,24 @@ Think like **content**, not music.
 - "No One Checks On You"
 
 People click **emotions.**
+
+### Best Days and Times to Release
+
+- **Release day:** Friday. This is industry standard — Spotify's New Music Friday playlists update on Fridays, and Release Radar populates over the weekend.
+- **Upload to SoundOn:** At least 7–14 days before your target release date. Distribution takes time.
+- **Posting content:** Tuesday–Thursday evenings (6–9 PM in your target audience's timezone) tend to get the best TikTok/Instagram engagement.
+
+### Hashtag Strategy
+
+When posting clips on TikTok/Instagram, use hashtags that match the emotion, not the music industry:
+
+**Good hashtags:**
+- #pov #relatable #fyp #viral #emotionaltiktok #latenightthoughts #sadtiktok #healing #movingon #villain
+
+**Bad hashtags:**
+- #newmusic #indieartist #spotifyplaylist #unsigned (these are oversaturated and mostly used by other artists, not listeners)
+
+> **The goal:** Get in front of people who FEEL things, not people who make music.
 
 ---
 
@@ -267,6 +356,86 @@ Examples:
 ```
 Make song → Upload → Post clip → Repeat
 ```
+
+### Free Video Creation (No Editing Skills Needed)
+
+TikTok offers a **free video creation tool** through their Creative Studio:
+
+**[TikTok Creative Studio — Text/Image to Video](https://ads.tiktok.com/creative/creativestudio/image-to-video?subApp=CreativeStudio/MiniApp/TextToVideo)**
+
+How to use it:
+1. Create a free TikTok Ads account (you don't need to run ads)
+2. Go to Creative Studio → Image/Text to Video
+3. Upload an image or enter a text prompt
+4. Generate a professional-looking video for free
+5. Download and add your song as background audio
+
+**Where to post these videos:**
+- TikTok
+- Instagram Reels
+- Facebook Reels
+- Reddit
+
+This is a game-changer if you don't have video editing skills. You get professional content for free that you can pair with your music.
+
+### Setting Up Your SoundOn Promo Page
+
+Your SoundOn promo page is how people find your artist on streaming platforms. **This is critical for promotion.**
+
+1. Go to your SoundOn dashboard → Artist Profile
+2. Add your artist bio, profile photo, and social links
+3. Choose which songs to feature as previews
+4. Copy your promo page link
+
+**How to use your promo link:**
+- Put it in your TikTok bio
+- Share it in Instagram stories
+- Add it to your Reddit posts
+- Include it in any social media promotion
+
+When people click your promo link, they can choose their preferred streaming platform (Spotify, Apple Music, etc.) to listen to your music. This is your main conversion tool — every piece of content you post should drive people back to this link.
+
+### Setting Up Your Sound on TikTok
+
+Once SoundOn distributes your music to TikTok:
+
+1. Your song becomes available as a "sound" on TikTok
+2. Go to your TikTok profile → claim your artist page
+3. Your sounds will be linked to your profile
+4. When you post videos, use YOUR OWN sound as the audio
+5. When others use your sound → more streams → more money
+
+> **Tip:** In every TikTok video caption, tell people to "use this sound" — this encourages others to create videos with your music, which drives streams.
+
+### Instagram Reels Strategy
+
+Don't sleep on Instagram — it works the same way as TikTok:
+
+1. Create a Reel using your song as background audio
+2. Use the same emotional text overlay formula
+3. Post consistently (3–5 Reels per week minimum)
+4. Use Instagram's "Collab" feature to cross-promote between your artist accounts
+
+> **Instagram advantage:** Reels get pushed to non-followers via the Explore page. And Instagram users tend to be older with more spending power (they're more likely to stream on Spotify/Apple Music).
+
+### YouTube Shorts
+
+YouTube Shorts is an underused channel for AI music promotion:
+
+1. Create 15–60 second vertical videos with your song
+2. Upload as a YouTube Short
+3. Add your song title and artist name in the description
+4. Link to your Spotify/Apple Music in your channel bio
+
+YouTube Music streams also generate royalties through SoundOn. Every Short that uses your audio is free promotion.
+
+### Reddit Promotion
+
+Subreddits like r/PlaylistsSpotify, r/IndieMusicFeedback, and niche genre subs can drive real streams:
+
+- **Don't spam.** Engage genuinely in the community first.
+- Post your music with context ("just dropped this, looking for feedback")
+- Some subreddits have weekly self-promotion threads — use those
 
 ### TikTok Artist Verification
 
@@ -334,7 +503,31 @@ Once something works:
 
 ---
 
-## STEP 10: Metadata (Advanced Edge)
+## STEP 10: Legal and Copyright (Know the Rules)
+
+### AI Music Copyright — Where Things Stand
+
+- **Suno Pro/Premier plans** grant you commercial rights to the music you generate. The free tier does NOT — it's for personal use only.
+- **Lyrics you write** (or have AI write for you) are your input. The melody and production are AI-generated.
+- Copyright law around AI music is still evolving. As of now, most platforms accept AI-generated music without issue.
+- **Do NOT claim you wrote/produced the music yourself** in official copyright registrations. Be honest in metadata — just don't volunteer "this is AI" either.
+
+### What NOT to Do
+
+- **Don't copy existing songs.** If your AI output sounds too similar to a real song, skip it. Content ID systems on YouTube/Spotify can flag it.
+- **Don't use real artist names** in your Suno prompts. This can produce output that's too close to the original and risks takedowns.
+- **Don't upload the same song under multiple artists.** Platforms detect duplicate audio and will flag or remove it.
+- **Don't use copyrighted images** for cover art. Use AI-generated art (Canva AI, DALL-E, Midjourney) or royalty-free images.
+
+### If You Get a Copyright Claim
+
+- Don't panic. Review the claim — sometimes they're automated and wrong.
+- If it's legit (your song sounds too close to something), pull the track and replace it.
+- If it's false, dispute it through the platform (Spotify for Artists, YouTube Studio, etc.)
+
+---
+
+## STEP 11: Metadata (Advanced Edge)
 
 ### What Metadata Needs Cleaning?
 
@@ -373,22 +566,48 @@ Consistency starts showing results after **2–3 months** as platforms index you
 
 ### Week 1
 - [ ] Sign up for SoundOn
-- [ ] Start making songs daily on Suno
+- [ ] Sign up for Suno (free or Pro)
+- [ ] Start making songs daily — aim for 5–10 per day
 - [ ] Create 2–3 artist identities (name + genre + vibe)
+- [ ] Google your artist names to make sure they're unique
+- [ ] Set up Canva for cover art
 
 ### Week 2
-- [ ] Continue making songs
+- [ ] Continue making songs — save your best ones
 - [ ] Build 1 album (8–12 songs) per artist
-- [ ] Prepare uploads
+- [ ] Create cover art for each album
+- [ ] Clean metadata on all tracks
+- [ ] Prepare uploads (titles, descriptions, art)
 
 ### Week 3
 - [ ] Start uploading (slowly — follow the ramp-up schedule)
-- [ ] Begin TikTok posting with clips
+- [ ] Claim your Spotify for Artists profile once first songs are live
+- [ ] Set up your SoundOn promo page for each artist
+- [ ] Create a TikTok account and start posting clips
+- [ ] Post 1–2 Reels on Instagram per artist
 
 ### Week 4
-- [ ] Track what works (check your analytics)
+- [ ] Track what works (check Spotify for Artists + SoundOn analytics)
 - [ ] Double down on winning styles
-- [ ] Add more content
+- [ ] Add more content — aim for 1 album per artist per week
+- [ ] Set up YouTube Shorts if you have bandwidth
+- [ ] Pitch your next release to Spotify editorial playlists (7+ days before release)
+- [ ] Start planning your second month's content calendar
+
+---
+
+## When a Song Blows Up (What to Do)
+
+If one of your songs starts getting traction (100+ streams/day, TikTok videos using your sound, playlist adds):
+
+1. **Double down immediately.** Make more songs in that EXACT style. Same genre, same vibe, same prompt structure.
+2. **Release a follow-up within 1 week.** Capitalize on the momentum while the algorithm is pushing you.
+3. **Post more content with that song.** 2–3 TikToks/Reels per day using that specific track.
+4. **Check where streams are coming from** in Spotify for Artists. If it's a playlist, note which one — try to land similar songs on the same playlist.
+5. **Consider running ads** ($5–$10/day on TikTok) specifically for that song while it has momentum.
+6. **Don't change what's working.** This isn't the time to experiment with new genres.
+
+> A single viral song can generate months of passive income. One hit pays for everything.
 
 ---
 
@@ -419,6 +638,17 @@ Most people fail because:
 I made money doing this with no promotion and no audience.
 
 If you actually push this... you'll outperform me fast.
+
+---
+
+## Companion Tools Site
+
+Check out our **[AI Music Tools & Artist Prompts](https://phil08533.github.io/SunoGuide/)** page for:
+- 100 artist sound-alike prompts for Suno (copy-paste ready)
+- AI tools directory
+- In-browser metadata cleaner
+- Free video creation guide
+- And more
 
 ---
 
