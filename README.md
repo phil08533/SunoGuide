@@ -1,4 +1,4 @@
-# SunoAI Music Money Blueprint
+AI Music Money Blueprint
 
 How to Turn Suno Songs Into Real Monthly Income Using SoundOn
 
@@ -272,7 +272,8 @@ Week 4:
 
 ---
 
-🎁 BONUS: 10 VIRAL SONG I
+🎁 BONUS: 10 VIRAL SONG IDEAS
+
 - POV: You finally move on
 - POV: They regret losing you
 - Gym: No excuses
@@ -308,4 +309,4 @@ Start TODAY.
 
 Not next week. Not when it’s perfect.
 
-Make your first 5 songs and go.Guide
+Make your first 5 songs and go.
