@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Music Toolkit — Artist Prompts, Tools & More</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a2e;--border:#2a2a3e;--text:#e0e0e8;--text2:#8888a0;--accent:#6c5ce7;--accent2:#a855f7;--green:#10b981;--orange:#f59e0b;--red:#ef4444}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0.75rem 1.5rem;display:flex;align-items:center;gap:1.5rem;overflow-x:auto;white-space:nowrap}
+nav .logo{font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0}
+nav a.nav-link{color:var(--text2);font-size:0.85rem;font-weight:500;transition:color 0.2s}
+nav a.nav-link:hover{color:var(--text);text-decoration:none}
+
+/* Hero */
+.hero{text-align:center;padding:4rem 1.5rem 3rem;background:linear-gradient(180deg,rgba(108,92,231,0.08) 0%,transparent 100%)}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:0.75rem;background:linear-gradient(135deg,#fff,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text2);font-size:1.1rem;max-width:600px;margin:0 auto}
+
+/* Sections */
+section{max-width:1100px;margin:0 auto;padding:3rem 1.5rem}
+section h2{font-size:1.8rem;font-weight:700;margin-bottom:0.5rem}
+section .subtitle{color:var(--text2);margin-bottom:2rem}
+
+/* Search */
+.search-box{width:100%;max-width:500px;padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:1rem;margin-bottom:1.5rem}
+.search-box:focus{outline:none;border-color:var(--accent)}
+
+/* Artist Pills */
+.pills-wrap{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem}
+.pill{padding:0.45rem 1rem;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;font-size:0.85rem;font-weight:500;transition:all 0.2s;white-space:nowrap}
+.pill:hover{border-color:var(--accent);color:var(--accent)}
+.pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.pill.hidden{display:none}
+.artist-count{color:var(--text2);font-size:0.9rem;margin-bottom:1rem}
+
+/* Prompt Display */
+.prompt-display{display:none;background:var(--surface);border:1px solid var(--accent);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;animation:fadeIn 0.2s ease}
+.prompt-display.visible{display:block}
+.prompt-display .prompt-artist{font-weight:700;font-size:1.2rem;margin-bottom:0.75rem}
+.prompt-display .prompt-text{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;color:var(--text2);font-size:0.95rem;line-height:1.7;font-family:monospace;margin-bottom:1rem;user-select:all}
+.copy-btn{padding:0.5rem 1.5rem;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;font-size:0.9rem;font-weight:600;transition:all 0.2s}
+.copy-btn:hover{background:var(--accent);color:#fff}
+.copy-btn.copied{background:var(--green);border-color:var(--green);color:#fff}
+.close-btn{padding:0.5rem 1rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:0.9rem;margin-left:0.5rem;transition:all 0.2s}
+.close-btn:hover{border-color:var(--text2);color:var(--text)}
+.prompt-actions{display:flex;gap:0.5rem;align-items:center}
+.no-results{color:var(--text2);text-align:center;padding:2rem}
+.loading-msg{color:var(--text2);padding:1rem 0}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+
+/* Tool Cards */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.2s,transform 0.2s}
+.tool-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tool-card h3{font-size:1.05rem;margin-bottom:0.25rem}
+.tool-card .tool-cat{color:var(--accent2);font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem}
+.tool-card p{color:var(--text2);font-size:0.88rem}
+.tool-card .tool-link{display:inline-block;margin-top:0.75rem;font-size:0.85rem;font-weight:600}
+
+/* Metadata Cleaner */
+.cleaner-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;max-width:600px}
+.cleaner-box p{color:var(--text2);margin-bottom:1rem;font-size:0.95rem}
+.file-input-wrap{position:relative;display:inline-block}
+.file-input-wrap input[type=file]{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer}
+.file-input-btn{display:inline-block;padding:0.6rem 1.5rem;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;cursor:pointer;font-size:0.95rem}
+#cleaner-status{margin-top:1rem;color:var(--text2);font-size:0.9rem}
+#download-btn{display:none;margin-top:1rem;padding:0.6rem 1.5rem;border-radius:8px;border:none;background:var(--green);color:#fff;font-weight:600;cursor:pointer;font-size:0.95rem}
+
+/* Video Section */
+.feature-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;margin-bottom:1.5rem}
+.feature-box h3{font-size:1.15rem;margin-bottom:0.75rem}
+.feature-box p,.feature-box li{color:var(--text2);font-size:0.95rem}
+.feature-box ol,.feature-box ul{padding-left:1.25rem;margin:0.75rem 0}
+.feature-box li{margin-bottom:0.4rem}
+.feature-box .cta-btn{display:inline-block;margin-top:1rem;padding:0.6rem 1.5rem;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;font-size:0.95rem}
+.feature-box .cta-btn:hover{text-decoration:none;opacity:0.9}
+
+/* Promo Page */
+.steps-list{counter-reset:steps}
+.steps-list li{counter-increment:steps;position:relative;padding-left:2.5rem;margin-bottom:1rem;color:var(--text2);font-size:0.95rem}
+.steps-list li::before{content:counter(steps);position:absolute;left:0;top:0;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700}
+
+/* Footer */
+footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border);color:var(--text2);font-size:0.85rem;margin-top:2rem}
+
+/* Responsive */
+@media(max-width:600px){
+    .hero h1{font-size:1.8rem}
+    section{padding:2rem 1rem}
+    .artist-grid,.tool-grid{grid-template-columns:1fr}
+    nav{gap:1rem;padding:0.6rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <span class="logo">AI Music Toolkit</span>
+    <a href="#artists" class="nav-link">Artist Prompts</a>
+    <a href="#tools" class="nav-link">AI Tools</a>
+    <a href="#metadata" class="nav-link">Metadata Cleaner</a>
+    <a href="#video" class="nav-link">Free Videos</a>
+    <a href="#promo" class="nav-link">Promo Setup</a>
+    <a href="https://github.com/phil08533/SunoGuide" class="nav-link">GitHub</a>
+</nav>
+
+<div class="hero">
+    <h1>AI Music Toolkit</h1>
+    <p>Artist sound-alike prompts, AI tools, metadata cleaner, and everything you need to build your AI music business.</p>
+</div>
+
+<!-- ARTIST PROMPTS -->
+<section id="artists">
+    <h2>Artist Sound-Alike Prompts</h2>
+    <p class="subtitle">Copy these Suno style prompts to recreate any artist's sound. Don't put artist names in Suno — use these descriptive prompts instead.</p>
+    <input type="text" class="search-box" id="artist-search" placeholder="Search artists...">
+    <div class="artist-count" id="artist-count"></div>
+    <div class="prompt-display" id="prompt-display">
+        <div class="prompt-artist" id="prompt-artist"></div>
+        <div class="prompt-text" id="prompt-text"></div>
+        <div class="prompt-actions">
+            <button class="copy-btn" id="copy-btn">Copy Prompt</button>
+            <button class="close-btn" id="close-btn">Close</button>
+        </div>
+    </div>
+    <div class="pills-wrap" id="pills-wrap">
+        <div class="loading-msg" id="loading-msg">Loading artists...</div>
+    </div>
+</section>
+
+<!-- AI TOOLS -->
+<section id="tools">
+    <h2>AI Tools Directory</h2>
+    <p class="subtitle">Everything you need to create, edit, promote, and distribute AI music.</p>
+    <div class="tool-grid">
+        <div class="tool-card">
+            <div class="tool-cat">Music Generation</div>
+            <h3>Suno</h3>
+            <p>AI music generator. Enter lyrics + style tags, get full songs. Pro plan ($10/mo) gives commercial rights.</p>
+            <a href="https://suno.com" class="tool-link" target="_blank" rel="noopener">suno.com &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Music Generation</div>
+            <h3>Udio</h3>
+            <p>Alternative AI music generator. Different sound engine than Suno — good for variety and comparison.</p>
+            <a href="https://udio.com" class="tool-link" target="_blank" rel="noopener">udio.com &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Lyrics & Strategy</div>
+            <h3>ChatGPT</h3>
+            <p>Write lyrics, brainstorm song concepts, generate artist bios, plan content calendars.</p>
+            <a href="https://chat.openai.com" class="tool-link" target="_blank" rel="noopener">chat.openai.com &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Lyrics & Strategy</div>
+            <h3>Claude</h3>
+            <p>Write lyrics, develop artist identities, plan promotion strategy, analyze what's working.</p>
+            <a href="https://claude.ai" class="tool-link" target="_blank" rel="noopener">claude.ai &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Cover Art</div>
+            <h3>Canva</h3>
+            <p>Create 3000x3000 cover art with built-in AI image generator. Free tier works fine. Templates available.</p>
+            <a href="https://canva.com" class="tool-link" target="_blank" rel="noopener">canva.com &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Cover Art</div>
+            <h3>Midjourney</h3>
+            <p>Premium AI image generator. Creates stunning album art from text prompts. Paid plans only.</p>
+            <a href="https://midjourney.com" class="tool-link" target="_blank" rel="noopener">midjourney.com &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Cover Art</div>
+            <h3>DALL-E (ChatGPT)</h3>
+            <p>AI image generation built into ChatGPT. Great for quick cover art. Included with ChatGPT Plus.</p>
+            <a href="https://chat.openai.com" class="tool-link" target="_blank" rel="noopener">chat.openai.com &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Cover Art</div>
+            <h3>Remove.bg</h3>
+            <p>Remove backgrounds from images instantly. Useful for cleaning up AI-generated art for covers.</p>
+            <a href="https://remove.bg" class="tool-link" target="_blank" rel="noopener">remove.bg &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Video & Editing</div>
+            <h3>CapCut</h3>
+            <p>Free video editor from TikTok. Add text overlays, effects, and your music. Desktop + mobile.</p>
+            <a href="https://capcut.com" class="tool-link" target="_blank" rel="noopener">capcut.com &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Video & Editing</div>
+            <h3>TikTok Creative Studio</h3>
+            <p>Free AI video creation tool. Turn images/text into videos. No editing skills needed. Perfect for promos.</p>
+            <a href="https://ads.tiktok.com/creative/creativestudio/image-to-video?subApp=CreativeStudio/MiniApp/TextToVideo" class="tool-link" target="_blank" rel="noopener">TikTok Creative Studio &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Voice</div>
+            <h3>ElevenLabs</h3>
+            <p>AI voice generation and cloning. Create voiceovers for promo videos or intros for your tracks.</p>
+            <a href="https://elevenlabs.io" class="tool-link" target="_blank" rel="noopener">elevenlabs.io &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Distribution</div>
+            <h3>SoundOn</h3>
+            <p>Free music distribution to Spotify, Apple Music, TikTok, and more. Best TikTok integration.</p>
+            <a href="https://soundon.global" class="tool-link" target="_blank" rel="noopener">soundon.global &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Distribution</div>
+            <h3>DistroKid</h3>
+            <p>$22.99/year for unlimited uploads. Fast delivery to all platforms. Popular alternative to SoundOn.</p>
+            <a href="https://distrokid.com" class="tool-link" target="_blank" rel="noopener">distrokid.com &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Analytics</div>
+            <h3>Spotify for Artists</h3>
+            <p>Claim your artist profile, pitch to playlists, track streams and listener demographics. Free.</p>
+            <a href="https://artists.spotify.com" class="tool-link" target="_blank" rel="noopener">artists.spotify.com &rarr;</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-cat">Audio Editing</div>
+            <h3>Audacity</h3>
+            <p>Free open-source audio editor. Trim songs, clean audio, adjust levels. Works on all platforms.</p>
+            <a href="https://audacityteam.org" class="tool-link" target="_blank" rel="noopener">audacityteam.org &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<!-- METADATA CLEANER -->
+<section id="metadata">
+    <h2>Audio Metadata Cleaner</h2>
+    <p class="subtitle">Strip AI generation tags and metadata from your audio files. Runs entirely in your browser — nothing is uploaded.</p>
+    <div class="cleaner-box">
+        <p>Suno and other AI tools embed metadata (generation tags, model info, timestamps) in audio files. This tool strips all metadata and gives you a clean file.</p>
+        <p><strong>Supported formats:</strong> MP3, WAV, FLAC, OGG, M4A</p>
+        <div class="file-input-wrap">
+            <input type="file" id="audio-input" accept=".mp3,.wav,.flac,.ogg,.m4a,audio/*">
+            <span class="file-input-btn">Choose Audio File</span>
+        </div>
+        <div id="cleaner-status"></div>
+        <button id="download-btn">Download Clean File</button>
+    </div>
+</section>
+
+<!-- FREE VIDEO CREATION -->
+<section id="video">
+    <h2>Free Video Creation</h2>
+    <p class="subtitle">Create professional promo videos for your music without any editing skills.</p>
+
+    <div class="feature-box">
+        <h3>TikTok Creative Studio (Free)</h3>
+        <p>TikTok offers a free AI-powered video creation tool through their ads platform. You don't need to run any ads — just create a free account.</p>
+        <ol>
+            <li>Create a free TikTok Ads account at the link below</li>
+            <li>Go to Creative Studio &rarr; Image/Text to Video</li>
+            <li>Upload an image or enter a text prompt describing your video</li>
+            <li>The AI generates a professional-looking video for free</li>
+            <li>Download the video and add your song as background audio</li>
+            <li>Post to TikTok, Instagram Reels, Facebook Reels, YouTube Shorts, or Reddit</li>
+        </ol>
+        <a href="https://ads.tiktok.com/creative/creativestudio/image-to-video?subApp=CreativeStudio/MiniApp/TextToVideo" class="cta-btn" target="_blank" rel="noopener">Open TikTok Creative Studio &rarr;</a>
+    </div>
+
+    <div class="feature-box">
+        <h3>Video Ideas for Your Songs</h3>
+        <ul>
+            <li><strong>Lyric videos:</strong> Text overlay with your lyrics scrolling over a moody background</li>
+            <li><strong>POV clips:</strong> Generate a scene that matches your song's emotion (rainy window, empty road, sunset)</li>
+            <li><strong>Album art animation:</strong> Use your cover art as the base image and let AI animate it</li>
+            <li><strong>Story clips:</strong> "POV: you finally let go" with cinematic visuals</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Tip:</strong> The first 3 seconds determine if someone keeps watching. Start with the most emotional visual + your song's hook.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>Where to Post</h3>
+        <ul>
+            <li><strong>TikTok</strong> — Use your own sound (distributed via SoundOn). This is your #1 channel.</li>
+            <li><strong>Instagram Reels</strong> — Same content, different audience. Older demographics, more likely to stream on Spotify.</li>
+            <li><strong>Facebook Reels</strong> — Repurpose the same videos. Low effort, additional reach.</li>
+            <li><strong>YouTube Shorts</strong> — YouTube Music streams count as royalties. Every Short is free promotion.</li>
+            <li><strong>Reddit</strong> — Post in niche subreddits. Engage genuinely, don't spam.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- PROMO PAGE SETUP -->
+<section id="promo">
+    <h2>SoundOn Promo Page Setup</h2>
+    <p class="subtitle">Your promo page is how listeners find you on their preferred streaming platform. This is your main conversion tool.</p>
+
+    <div class="feature-box">
+        <h3>Setting Up Your Artist Profile</h3>
+        <ol class="steps-list">
+            <li>Go to your SoundOn dashboard and navigate to Artist Profile</li>
+            <li>Add your artist bio — keep it short and match your genre's vibe</li>
+            <li>Upload a profile photo (can be AI-generated via Canva or Midjourney)</li>
+            <li>Add social media links (TikTok, Instagram, YouTube)</li>
+            <li>Choose which songs to feature as previews on your page</li>
+            <li>Copy your promo page link — this is your golden URL</li>
+        </ol>
+    </div>
+
+    <div class="feature-box">
+        <h3>Using Your Promo Link</h3>
+        <p>Your SoundOn promo link lets people choose their preferred streaming platform (Spotify, Apple Music, etc.) to listen. Put this link <strong>everywhere:</strong></p>
+        <ul>
+            <li>TikTok bio (most important)</li>
+            <li>Instagram bio and stories</li>
+            <li>YouTube channel description</li>
+            <li>Reddit posts when sharing music</li>
+            <li>Any social media where you promote</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Every piece of content you post should drive people back to this link.</strong></p>
+    </div>
+
+    <div class="feature-box">
+        <h3>Setting Up Your Sound on TikTok</h3>
+        <ol class="steps-list">
+            <li>Upload your music through SoundOn — it gets distributed to TikTok automatically</li>
+            <li>Your song becomes available as a "sound" on TikTok within 1-2 weeks</li>
+            <li>Go to your TikTok profile and claim your artist page</li>
+            <li>Your sounds will be linked to your profile</li>
+            <li>When you post videos, always use YOUR OWN sound as the audio</li>
+            <li>When others use your sound, it drives streams and royalties</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Pro tip:</strong> In every TikTok caption, write "use this sound" — it encourages others to create videos with your music.</p>
+    </div>
+</section>
+
+<footer>
+    <p>AI Music Toolkit &mdash; Companion site to the <a href="https://github.com/phil08533/SunoGuide">AI Music Money Blueprint</a></p>
+    <p style="margin-top:0.5rem">Add artist prompts: drop .txt files in the <code>artists/</code> folder — filename = artist name, content = Suno prompt</p>
+</footer>
+
+<script>
+// Artist Prompts — fetches .txt files from the artists/ folder on GitHub
+const REPO = 'phil08533/SunoGuide';
+const BRANCH = 'main';
+const pillsWrap = document.getElementById('pills-wrap');
+const searchInput = document.getElementById('artist-search');
+const countEl = document.getElementById('artist-count');
+const promptDisplay = document.getElementById('prompt-display');
+const promptArtist = document.getElementById('prompt-artist');
+const promptText = document.getElementById('prompt-text');
+const copyBtn = document.getElementById('copy-btn');
+const closeBtn = document.getElementById('close-btn');
+const loadingMsg = document.getElementById('loading-msg');
+
+let artists = []; // {name, prompt, pill}
+let activeArtist = null;
+
+// Load artist list from GitHub API
+async function loadArtists() {
+    try {
+        const res = await fetch(`https://api.github.com/repos/${REPO}/contents/artists?ref=${BRANCH}`);
+        if (!res.ok) throw new Error('Could not load artists');
+        const files = await res.json();
+        const txtFiles = files.filter(f => f.name.endsWith('.txt'));
+
+        // Fetch all prompts in parallel
+        const results = await Promise.all(txtFiles.map(async f => {
+            const r = await fetch(f.download_url);
+            const prompt = (await r.text()).trim();
+            const name = f.name.replace(/\.txt$/, '');
+            return { name, prompt };
+        }));
+
+        artists = results.sort((a, b) => a.name.localeCompare(b.name));
+        loadingMsg.style.display = 'none';
+        renderPills();
+    } catch (err) {
+        loadingMsg.textContent = 'Could not load artists. Make sure the repo is public and artists/ folder has .txt files.';
+    }
+}
+
+function renderPills() {
+    // Clear existing pills (keep loading msg)
+    pillsWrap.querySelectorAll('.pill').forEach(p => p.remove());
+    pillsWrap.querySelector('.no-results')?.remove();
+
+    const q = searchInput.value.toLowerCase();
+    let visible = 0;
+
+    artists.forEach(a => {
+        if (!a.pill) {
+            const pill = document.createElement('button');
+            pill.className = 'pill';
+            pill.textContent = a.name;
+            pill.addEventListener('click', () => selectArtist(a));
+            a.pill = pill;
+            pillsWrap.appendChild(pill);
+        }
+
+        const matches = a.name.toLowerCase().includes(q) || a.prompt.toLowerCase().includes(q);
+        a.pill.classList.toggle('hidden', !matches);
+        if (matches) visible++;
+    });
+
+    countEl.textContent = visible + ' artist' + (visible !== 1 ? 's' : '');
+
+    if (visible === 0 && artists.length > 0) {
+        const noRes = document.createElement('div');
+        noRes.className = 'no-results';
+        noRes.textContent = 'No artists found. Try a different search.';
+        pillsWrap.appendChild(noRes);
+    }
+}
+
+function selectArtist(a) {
+    // Deactivate previous
+    artists.forEach(x => x.pill?.classList.remove('active'));
+    a.pill.classList.add('active');
+    activeArtist = a;
+
+    promptArtist.textContent = a.name;
+    promptText.textContent = a.prompt;
+    promptDisplay.classList.add('visible');
+    copyBtn.textContent = 'Copy Prompt';
+    copyBtn.classList.remove('copied');
+
+    // Scroll prompt into view
+    promptDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+closeBtn.addEventListener('click', () => {
+    promptDisplay.classList.remove('visible');
+    artists.forEach(x => x.pill?.classList.remove('active'));
+    activeArtist = null;
+});
+
+copyBtn.addEventListener('click', () => {
+    if (!activeArtist) return;
+    navigator.clipboard.writeText(activeArtist.prompt).then(() => {
+        copyBtn.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
+        setTimeout(() => { copyBtn.textContent = 'Copy Prompt'; copyBtn.classList.remove('copied'); }, 1500);
+    });
+});
+
+searchInput.addEventListener('input', renderPills);
+loadArtists();
+
+// Metadata Cleaner
+const audioInput = document.getElementById('audio-input');
+const status = document.getElementById('cleaner-status');
+const downloadBtn = document.getElementById('download-btn');
+let cleanBlob = null;
+let cleanName = '';
+
+audioInput.addEventListener('change', async function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    status.textContent = 'Processing ' + file.name + '...';
+    downloadBtn.style.display = 'none';
+    cleanBlob = null;
+
+    try {
+        const ext = file.name.split('.').pop().toLowerCase();
+        const buffer = await file.arrayBuffer();
+        const bytes = new Uint8Array(buffer);
+
+        if (ext === 'wav') {
+            // WAV: rebuild with just the audio data chunk, strip all other chunks
+            cleanBlob = cleanWav(bytes);
+            cleanName = file.name.replace(/\.[^.]+$/, '_clean.wav');
+        } else if (ext === 'mp3') {
+            // MP3: strip ID3v1 and ID3v2 tags
+            cleanBlob = cleanMp3(bytes);
+            cleanName = file.name.replace(/\.[^.]+$/, '_clean.mp3');
+        } else {
+            // For other formats, use AudioContext to decode and re-encode as WAV
+            cleanBlob = await cleanViaAudioContext(buffer);
+            cleanName = file.name.replace(/\.[^.]+$/, '_clean.wav');
+        }
+
+        status.textContent = 'Done! Metadata stripped from ' + file.name;
+        downloadBtn.style.display = 'inline-block';
+    } catch (err) {
+        status.textContent = 'Error: ' + err.message;
+    }
+});
+
+downloadBtn.addEventListener('click', function() {
+    if (!cleanBlob) return;
+    const url = URL.createObjectURL(cleanBlob);
+    const a = document.createElement('a');
+    a.href = url; a.download = cleanName; a.click();
+    URL.revokeObjectURL(url);
+});
+
+function cleanWav(bytes) {
+    // Find the 'data' chunk and rebuild minimal WAV
+    const view = new DataView(bytes.buffer);
+    // Read fmt chunk
+    let fmtOffset = 12;
+    let dataOffset = -1, dataSize = 0;
+    let fmtData = null;
+
+    let offset = 12;
+    while (offset < bytes.length - 8) {
+        const id = String.fromCharCode(bytes[offset], bytes[offset+1], bytes[offset+2], bytes[offset+3]);
+        const size = view.getUint32(offset + 4, true);
+        if (id === 'fmt ') {
+            fmtData = bytes.slice(offset, offset + 8 + size);
+        } else if (id === 'data') {
+            dataOffset = offset + 8;
+            dataSize = size;
+        }
+        offset += 8 + size;
+        if (size % 2 !== 0) offset++; // padding
+    }
+
+    if (!fmtData || dataOffset < 0) {
+        return new Blob([bytes], {type: 'audio/wav'});
+    }
+
+    const audioData = bytes.slice(dataOffset, dataOffset + dataSize);
+    const totalSize = 4 + fmtData.length + 8 + audioData.length;
+    const out = new Uint8Array(8 + totalSize);
+    const outView = new DataView(out.buffer);
+
+    // RIFF header
+    out.set([0x52,0x49,0x46,0x46], 0); // "RIFF"
+    outView.setUint32(4, totalSize, true);
+    out.set([0x57,0x41,0x56,0x45], 8); // "WAVE"
+    // fmt chunk
+    out.set(fmtData, 12);
+    // data chunk header
+    const dataChunkOffset = 12 + fmtData.length;
+    out.set([0x64,0x61,0x74,0x61], dataChunkOffset); // "data"
+    outView.setUint32(dataChunkOffset + 4, audioData.length, true);
+    out.set(audioData, dataChunkOffset + 8);
+
+    return new Blob([out], {type: 'audio/wav'});
+}
+
+function cleanMp3(bytes) {
+    let start = 0;
+    let end = bytes.length;
+
+    // Strip ID3v2 tag at the beginning
+    if (bytes[0] === 0x49 && bytes[1] === 0x44 && bytes[2] === 0x33) { // "ID3"
+        const size = (bytes[6] << 21) | (bytes[7] << 14) | (bytes[8] << 7) | bytes[9];
+        start = 10 + size;
+    }
+
+    // Strip ID3v1 tag at the end (last 128 bytes starting with "TAG")
+    if (end >= 128) {
+        const tagStart = end - 128;
+        if (bytes[tagStart] === 0x54 && bytes[tagStart+1] === 0x41 && bytes[tagStart+2] === 0x47) {
+            end = tagStart;
+        }
+    }
+
+    return new Blob([bytes.slice(start, end)], {type: 'audio/mpeg'});
+}
+
+async function cleanViaAudioContext(buffer) {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const audioBuffer = await ctx.decodeAudioData(buffer);
+    const numChannels = audioBuffer.numberOfChannels;
+    const sampleRate = audioBuffer.sampleRate;
+    const length = audioBuffer.length;
+
+    // Create WAV from decoded audio
+    const bytesPerSample = 2;
+    const dataSize = length * numChannels * bytesPerSample;
+    const headerSize = 44;
+    const out = new ArrayBuffer(headerSize + dataSize);
+    const view = new DataView(out);
+
+    // WAV header
+    writeString(view, 0, 'RIFF');
+    view.setUint32(4, 36 + dataSize, true);
+    writeString(view, 8, 'WAVE');
+    writeString(view, 12, 'fmt ');
+    view.setUint32(16, 16, true);
+    view.setUint16(20, 1, true); // PCM
+    view.setUint16(22, numChannels, true);
+    view.setUint32(24, sampleRate, true);
+    view.setUint32(28, sampleRate * numChannels * bytesPerSample, true);
+    view.setUint16(32, numChannels * bytesPerSample, true);
+    view.setUint16(34, 16, true);
+    writeString(view, 36, 'data');
+    view.setUint32(40, dataSize, true);
+
+    // Interleave channels
+    let offset = 44;
+    for (let i = 0; i < length; i++) {
+        for (let ch = 0; ch < numChannels; ch++) {
+            let sample = audioBuffer.getChannelData(ch)[i];
+            sample = Math.max(-1, Math.min(1, sample));
+            view.setInt16(offset, sample * 0x7FFF, true);
+            offset += 2;
+        }
+    }
+
+    ctx.close();
+    return new Blob([out], {type: 'audio/wav'});
+}
+
+function writeString(view, offset, str) {
+    for (let i = 0; i < str.length; i++) {
+        view.setUint8(offset + i, str.charCodeAt(i));
+    }
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    });
+});
+</script>
+</body>
+</html>
