@@ -60,7 +60,7 @@ Use **Custom mode** for full control. This is where you enter your own lyrics an
 
 > *The Suno creation screen lets you enter lyrics, choose styles, and select the model version. Use Custom mode for best results.*
 
-![Suno custom creation screen — enter your lyrics and style tags here](images/suno-custom-mode.jpg)
+<!-- Add your own screenshot of the Suno custom creation screen here -->
 
 ### How to Write Prompts
 
@@ -230,7 +230,7 @@ Why:
 
 > *Your SoundOn promo page lets you set up artist profiles, add social links, choose song previews, and customize your bio. Each artist gets their own page.*
 
-![SoundOn artist promo page setup — customize your profile, add social links, and select song previews](images/soundon-promo-page.jpg)
+<!-- Add your own screenshot of the SoundOn promo page here -->
 
 ---
 
