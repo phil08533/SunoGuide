@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Music Money Blueprint — Print / PDF</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', Georgia, serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 56px;
+  }
+
+  /* ── Top banner link ── */
+  .site-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #0f0f0f;
+    color: #f0c060;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin-bottom: 36px;
+    font-size: 10.5pt;
+  }
+  .site-banner .label { color: #aaa; white-space: nowrap; }
+  .site-banner a {
+    color: #f0c060;
+    font-weight: 700;
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .site-banner a:hover { text-decoration: underline; }
+  .site-banner .icon { font-size: 18px; flex-shrink: 0; }
+
+  /* ── Headings ── */
+  h1 {
+    font-size: 24pt;
+    font-weight: 800;
+    color: #0f0f0f;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 13pt;
+    color: #555;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+  h2 {
+    font-size: 15pt;
+    font-weight: 700;
+    color: #0f0f0f;
+    margin-top: 36px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #e8a838;
+  }
+  h3 {
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #222;
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+
+  /* ── Body text ── */
+  p { margin-bottom: 10px; }
+
+  ul, ol {
+    padding-left: 22px;
+    margin-bottom: 10px;
+  }
+  li { margin-bottom: 4px; }
+
+  /* ── Blockquotes (tips) ── */
+  blockquote {
+    border-left: 4px solid #e8a838;
+    background: #fffbf0;
+    padding: 10px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    color: #444;
+    font-size: 10.5pt;
+  }
+
+  /* ── Code blocks ── */
+  pre {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 9.5pt;
+    overflow-x: auto;
+    margin: 10px 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 9.5pt;
+    background: #f0f0f0;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 10pt;
+  }
+  th {
+    background: #0f0f0f;
+    color: #f0c060;
+    font-weight: 700;
+    text-align: left;
+    padding: 8px 12px;
+  }
+  td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #333;
+  }
+  tr:nth-child(even) td { background: #fafafa; }
+
+  /* ── Checklist ── */
+  .checklist { list-style: none; padding-left: 4px; }
+  .checklist li { padding-left: 24px; position: relative; margin-bottom: 5px; }
+  .checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    color: #e8a838;
+    font-size: 13px;
+  }
+
+  /* ── Dividers ── */
+  hr {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 28px 0;
+  }
+
+  /* ── Step badges ── */
+  .step-badge {
+    display: inline-block;
+    background: #e8a838;
+    color: #0f0f0f;
+    font-weight: 800;
+    font-size: 9pt;
+    padding: 2px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── Bonus box ── */
+  .bonus-box {
+    background: #fffbf0;
+    border: 1.5px solid #e8a838;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 14px 0;
+  }
+
+  /* ── Print rules ── */
+  @media print {
+    body { padding: 32px 40px; }
+    .site-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .step-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h2 { page-break-after: avoid; }
+    h3 { page-break-after: avoid; }
+    pre { page-break-inside: avoid; }
+    table { page-break-inside: avoid; }
+    blockquote { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .bonus-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  @page {
+    margin: 0.85in 0.9in;
+    size: letter;
+  }
+
+  /* ── Print button (hidden when printing) ── */
+  .print-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #0f0f0f;
+    color: #fff;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    font-size: 10pt;
+    font-family: 'Inter', sans-serif;
+  }
+  .print-bar span { color: #aaa; }
+  .print-btn {
+    background: #e8a838;
+    color: #0f0f0f;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 10pt;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .print-btn:hover { background: #f0c060; }
+  @media print { .print-bar { display: none !important; } }
+
+  /* Push body below fixed bar */
+  body { padding-top: 80px; }
+  @media print { body { padding-top: 48px; } }
+</style>
+</head>
+<body>
+
+<!-- Fixed print bar (hidden when printing) -->
+<div class="print-bar">
+  <span>AI Music Money Blueprint — ready to save as PDF</span>
+  <button class="print-btn" onclick="window.print()">🖨 Save as PDF</button>
+</div>
+
+<!-- Toolkit link banner -->
+<div class="site-banner">
+  <span class="icon">🔗</span>
+  <span class="label">Free Companion Toolkit:</span>
+  <a href="https://phil08533.github.io/SunoGuide" target="_blank">phil08533.github.io/SunoGuide</a>
+  <span style="color:#666;margin-left:auto;font-size:9pt">Artist prompts · Metadata cleaner · AI tools · Free video creation</span>
+</div>
+
+<!-- Title -->
+<h1>AI Music Money Blueprint</h1>
+<p class="subtitle">How to Turn Suno Songs Into Real Monthly Income Using SoundOn</p>
+<hr>
+
+<!-- Read This First -->
+<h2>Read This First</h2>
+<p>I'm not a record label. I'm not a famous artist.</p>
+<p>I'm just someone who tested this system at scale.</p>
+<ul>
+  <li>Hundreds of songs uploaded</li>
+  <li>Multiple "artists" running at once</li>
+  <li>~$20/month with zero promotion</li>
+  <li>And yes… I got blocked once</li>
+</ul>
+<p>Which is exactly why this guide exists — so you don't make the same mistakes.</p>
+
+<h2>What This Guide Will Do</h2>
+<p>By the end of this, you will know:</p>
+<ul>
+  <li>How to create songs with AI (fast)</li>
+  <li>How to write lyrics using AI tools</li>
+  <li>How to upload them to streaming platforms</li>
+  <li>How to avoid getting banned</li>
+  <li>How to scale into multiple artists</li>
+  <li>How to promote on TikTok, Instagram, YouTube, and Reddit</li>
+  <li>How to create free promo videos with no editing skills</li>
+  <li>How to handle copyright and legal basics</li>
+  <li>How to turn this into real income</li>
+</ul>
+
+<hr>
+
+<!-- STEP 1 -->
+<h2><span class="step-badge">Step 1</span> Get Set Up (DO THIS FIRST)</h2>
+<h3>Sign Up for SoundOn</h3>
+<p>This is your distribution engine. SoundOn puts your music on:</p>
+<ul>
+  <li>Spotify</li>
+  <li>Apple Music</li>
+  <li>TikTok</li>
+  <li>Instagram</li>
+  <li>YouTube Music</li>
+  <li>Amazon Music</li>
+  <li>Deezer</li>
+  <li>And more</li>
+</ul>
+<blockquote><strong>Important:</strong> Approval can take time. While you wait — start creating music immediately.</blockquote>
+
+<h3>Set Up Spotify for Artists</h3>
+<p>Once your first song goes live on Spotify:</p>
+<ol>
+  <li>Go to <strong>artists.spotify.com</strong> and claim your artist profile</li>
+  <li>Add a bio, profile photo, and header image</li>
+  <li>Use the <strong>"Upcoming Release"</strong> feature to pitch songs to Spotify's editorial playlists (do this at least 7 days before release)</li>
+  <li>Check your analytics weekly — see which songs get saves, which playlists you land on</li>
+</ol>
+<blockquote><strong>Why this matters:</strong> Spotify's algorithm recommends music based on saves, playlist adds, and listen-through rate. Claiming your profile and pitching releases is free and can land you on algorithmic playlists like Discover Weekly and Release Radar.</blockquote>
+
+<h3>Alternative Distributors</h3>
+<table>
+  <tr><th>Distributor</th><th>Cost</th><th>Notes</th></tr>
+  <tr><td>SoundOn</td><td>Free</td><td>Best for TikTok integration</td></tr>
+  <tr><td>DistroKid</td><td>$22.99/year</td><td>Unlimited uploads, fast delivery</td></tr>
+  <tr><td>TuneCore</td><td>$9.99/single</td><td>Per-release pricing</td></tr>
+  <tr><td>Amuse</td><td>Free tier</td><td>Slower delivery, limited features</td></tr>
+</table>
+<blockquote>Stick with SoundOn unless you have a specific reason to switch. The TikTok integration alone makes it worth it.</blockquote>
+
+<hr>
+
+<!-- STEP 2 -->
+<h2><span class="step-badge">Step 2</span> Create Songs FAST (Don't Overthink This)</h2>
+<p>Use AI tools like <strong>Suno</strong> to generate songs.</p>
+
+<h3>Which Suno Tier?</h3>
+<p><strong>Free or Pro ($10/mo) is fine.</strong> You can make over a hundred songs with the Pro model in a month. Premier ($30/mo) is nice but not necessary to start.</p>
+
+<h3>Simple vs Custom Mode</h3>
+<p>Use <strong>Custom mode</strong> for full control. This is where you enter your own lyrics and style tags.</p>
+
+<h3>How to Write Prompts</h3>
+<p>In the <strong>Lyrics</strong> box, use structure tags:</p>
+<pre>[Verse]
+Your verse lyrics here
+
+[Chorus]
+Your chorus lyrics here</pre>
+<p><strong>Only put in what you want sung.</strong> If you like a generated sound, reuse that prompt.</p>
+<p>In the <strong>Styles</strong> box, enter descriptive tags:</p>
+<pre>Emotional breakup song, slow tempo, female vocals, viral TikTok style</pre>
+<p>Or:</p>
+<pre>Dark cinematic villain arc, deep voice, powerful chorus</pre>
+<p>Keep it simple. Don't over-engineer.</p>
+
+<h3>Using AI to Write Better Lyrics</h3>
+<p>Don't write lyrics from scratch — use AI to help:</p>
+<ol>
+  <li><strong>ChatGPT or Claude:</strong> Ask it to write lyrics in a specific style. Example: <em>"Write a 2-verse, 1-chorus emotional breakup song. Female perspective. Short lines. Made for TikTok."</em></li>
+  <li><strong>Iterate:</strong> If the first draft is close, ask it to revise specific lines</li>
+  <li><strong>Steal structures:</strong> Find songs you like, feed the structure (not the words) to AI and ask for new lyrics in that format</li>
+</ol>
+<blockquote><strong>Pro tip:</strong> Ask AI to write lyrics with a strong "hook line" in the first 5 seconds. That's what makes people stop scrolling on TikTok.</blockquote>
+
+<h3>Song Length</h3>
+<ul>
+  <li><strong>Ideal length: 2–3 minutes.</strong> Streaming platforms count a "stream" after ~30 seconds. Shorter songs = more replays = more streams.</li>
+  <li><strong>For TikTok clips:</strong> The hook needs to hit in the first 10–15 seconds. Front-load the emotion.</li>
+  <li><strong>Suno tip:</strong> If a song generates at 4+ minutes, use the "Extend" feature to create shorter versions, or trim in Audacity / CapCut.</li>
+</ul>
+
+<h3>Hit Rate</h3>
+<p>You get a usable song almost <strong>every time you generate.</strong> They don't all have to sound great — <strong>quantity over quality</strong> at this stage.</p>
+
+<h3>High-Performing Song Types</h3>
+<table>
+  <tr><th>Type</th><th>Why It Works</th></tr>
+  <tr><td>Sad / emotional songs</td><td>High relatability, gets shares</td></tr>
+  <tr><td>Relationship / breakup</td><td>Massive TikTok audience</td></tr>
+  <tr><td>"POV" style songs</td><td>Built for video content</td></tr>
+  <tr><td>Gym / motivation</td><td>Consistent niche demand</td></tr>
+  <tr><td>Dark / villain arc</td><td>Trending aesthetic</td></tr>
+</table>
+
+<hr>
+
+<!-- STEP 3 -->
+<h2><span class="step-badge">Step 3</span> Create Multiple Artists (This Is Key)</h2>
+<p>This is where most people mess up. <strong>Don't rely on one artist.</strong></p>
+
+<h3>How Many Artists?</h3>
+<ul>
+  <li><strong>Start with:</strong> 2–3 artists</li>
+  <li><strong>Scale to:</strong> 5–10 artists max</li>
+</ul>
+<p>Too many = hard to manage. Too few = slow growth.</p>
+
+<h3>One Account, Multiple Artists</h3>
+<p>Use <strong>ONE SoundOn account</strong> and create <strong>multiple artists under it.</strong></p>
+<ul>
+  <li>Easier management</li>
+  <li>Lower risk vs juggling accounts</li>
+  <li>Looks more legitimate</li>
+</ul>
+
+<h3>Give Each Artist an Identity</h3>
+<table>
+  <tr><th>Artist</th><th>Style</th></tr>
+  <tr><td>Artist 1</td><td>Sad emotional / female vocal</td></tr>
+  <tr><td>Artist 2</td><td>Gym motivation / hype</td></tr>
+  <tr><td>Artist 3</td><td>Dark cinematic / deep voice</td></tr>
+</table>
+
+<h3>Naming Your Artists</h3>
+<ul>
+  <li><strong>Google the name first</strong> — make sure no real artist already uses it</li>
+  <li><strong>Keep it short and memorable</strong> — 1–2 words max</li>
+  <li><strong>Match the vibe</strong> — a dark cinematic artist shouldn't be named "Sunny Days"</li>
+  <li><strong>Avoid special characters</strong> — stick to letters</li>
+  <li><strong>Check Spotify/Apple Music</strong> — search the name before you commit</li>
+</ul>
+
+<hr>
+
+<!-- STEP 4 -->
+<h2><span class="step-badge">Step 4</span> Do NOT Get Banned</h2>
+<p>I learned this the hard way.</p>
+
+<h3>What Gets You Blocked</h3>
+<ul>
+  <li>Uploading too many songs at once</li>
+  <li>Spamming bulk uploads</li>
+  <li>No consistency, just dumping content</li>
+  <li>Brand new account with instant bulk upload</li>
+</ul>
+
+<h3>What Happened When I Got Flagged</h3>
+<ul>
+  <li>Upload access was restricted/blocked</li>
+  <li>No clear warning beforehand</li>
+  <li>Likely triggered by bulk behavior</li>
+  <li>Couldn't upload new tracks — account basically "frozen"</li>
+</ul>
+<p><strong>Recovery:</strong> Waited it out. Slowed down behavior after. Avoided repeating patterns.</p>
+<blockquote><strong>Prevention &gt; Recovery.</strong> This isn't always recoverable quickly.</blockquote>
+
+<h3>Safe Upload Strategy</h3>
+<p><em>Per artist, per week:</em></p>
+<table>
+  <tr><th>Strategy</th><th>Cadence</th></tr>
+  <tr><td>Album approach</td><td>1 album per week, 8–12 songs per album</td></tr>
+  <tr><td>Singles approach</td><td>1–2 singles every 2–3 days</td></tr>
+  <tr><td>Safe weekly range</td><td>8–15 songs per artist</td></tr>
+</table>
+<p><em>Ramp-up schedule for new accounts:</em></p>
+<table>
+  <tr><th>Week</th><th>Upload Volume</th></tr>
+  <tr><td>Week 1</td><td>Light — 1–3 songs total</td></tr>
+  <tr><td>Week 2+</td><td>Ramp to full album schedule</td></tr>
+</table>
+<blockquote><strong>Slow = sustainable.</strong> Stay consistent, not explosive.</blockquote>
+
+<h3>Vocal vs Instrumental Ratio</h3>
+<p>Instrumental/lofi gets flagged more often.</p>
+<ul>
+  <li>70–80% vocal tracks</li>
+  <li>20–30% instrumental</li>
+</ul>
+<p>Instrumentals trigger higher spam/AI suspicion. Vocals are perceived as "real artist" content.</p>
+
+<hr>
+
+<!-- STEP 5 -->
+<h2><span class="step-badge">Step 5</span> Upload to SoundOn</h2>
+<ol>
+  <li>Upload your track</li>
+  <li>Add title + artist name</li>
+  <li>Add simple cover art (3000×3000 px, JPG or PNG)</li>
+  <li>Submit</li>
+</ol>
+
+<h3>Songs Per Album</h3>
+<p><strong>Sweet spot: 8–12 songs</strong> — Looks like a real album, not suspicious, enough content to generate streams.</p>
+
+<h3>Cover Art (Canva AI Workflow)</h3>
+<p>Canva has a built-in AI image generator — you don't need Midjourney or DALL-E for cover art.</p>
+<ol>
+  <li>Open Canva → Create custom size: <strong>3000 × 3000 px</strong></li>
+  <li>Go to <strong>Elements</strong> → type a prompt → click <strong>Generate</strong></li>
+  <li>Canva's AI creates images from your prompt (e.g., "a donut in space", "neon city at night")</li>
+  <li>Pick the one you like and place it as your background</li>
+  <li>Go to <strong>Text</strong> → choose a font that matches your artist's vibe</li>
+  <li>Add your <strong>artist name</strong> in a stylish font</li>
+  <li>Add the <strong>album name</strong> underneath in a smaller, cleaner font</li>
+  <li>Download as PNG</li>
+</ol>
+<ul>
+  <li>Match the art style to the genre — dark moody art for dark artists, bright for pop</li>
+  <li>Keep text readable — don't let it blend into the background</li>
+  <li>Use the same font/color scheme across albums for one artist (brand consistency)</li>
+  <li>Canva's free tier includes the AI generator</li>
+</ul>
+
+<hr>
+
+<!-- STEP 6 -->
+<h2><span class="step-badge">Step 6</span> Titles Matter More Than Music</h2>
+<p>Think like <strong>content</strong>, not music. People click <strong>emotions.</strong></p>
+<ul>
+  <li>"POV: You Finally Let Go"</li>
+  <li>"Late Night Drive Alone"</li>
+  <li>"No One Checks On You"</li>
+</ul>
+
+<h3>Best Days and Times to Release</h3>
+<ul>
+  <li><strong>Release day: Friday.</strong> Spotify's New Music Friday playlists update on Fridays.</li>
+  <li><strong>Upload to SoundOn:</strong> At least 7–14 days before your target release date.</li>
+  <li><strong>Posting content:</strong> Tuesday–Thursday evenings (6–9 PM in your audience's timezone).</li>
+</ul>
+
+<h3>Hashtag Strategy</h3>
+<p><strong>Good hashtags:</strong> #pov #relatable #fyp #viral #emotionaltiktok #latenightthoughts #sadtiktok #healing #movingon #villain</p>
+<p><strong>Bad hashtags:</strong> #newmusic #indieartist #spotifyplaylist #unsigned (oversaturated, mostly used by other artists, not listeners)</p>
+<blockquote><strong>The goal:</strong> Get in front of people who FEEL things, not people who make music.</blockquote>
+
+<hr>
+
+<!-- STEP 7 -->
+<h2><span class="step-badge">Step 7</span> Promotion (This Is Where Money Grows)</h2>
+<p>Right now you can make money WITHOUT promotion… but promotion = scale.</p>
+
+<h3>TikTok Strategy</h3>
+<p>Post short clips of your song with emotional text overlay:</p>
+<ul>
+  <li>"POV: you gave them everything"</li>
+  <li>"This song hurts more than it should"</li>
+</ul>
+<p><strong>Content Loop:</strong></p>
+<pre>Make song → Upload → Post clip → Repeat</pre>
+
+<h3>Free Video Creation (No Editing Skills Needed)</h3>
+<p>TikTok's <strong>Creative Studio</strong> is a free AI video creation tool — no need to run ads, just a free account.</p>
+<ol>
+  <li>Create a free TikTok Ads account at <strong>ads.tiktok.com</strong></li>
+  <li>Go to Creative Studio → Image/Text to Video</li>
+  <li>Upload an image or enter a text prompt</li>
+  <li>Generate a professional-looking video for free</li>
+  <li>Download and add your song as background audio</li>
+</ol>
+<p><strong>Where to post:</strong> TikTok · Instagram Reels · Facebook Reels · Reddit</p>
+
+<h3>Instagram Reels Strategy</h3>
+<ul>
+  <li>Create a Reel using your song as background audio</li>
+  <li>Use the same emotional text overlay formula</li>
+  <li>Post consistently (3–5 Reels per week minimum)</li>
+  <li>Use Instagram's "Collab" feature to cross-promote between your artist accounts</li>
+</ul>
+<blockquote><strong>Instagram advantage:</strong> Reels get pushed to non-followers via the Explore page. Instagram users tend to be older with more spending power (more likely to stream on Spotify/Apple Music).</blockquote>
+
+<h3>YouTube Shorts</h3>
+<ol>
+  <li>Create 15–60 second vertical videos with your song</li>
+  <li>Upload as a YouTube Short</li>
+  <li>Add your song title and artist name in the description</li>
+  <li>Link to your Spotify/Apple Music in your channel bio</li>
+</ol>
+<p>YouTube Music streams generate royalties through SoundOn. Every Short is free promotion.</p>
+
+<h3>Reddit Promotion</h3>
+<p>Subreddits like r/PlaylistsSpotify, r/IndieMusicFeedback, and niche genre subs can drive real streams.</p>
+<ul>
+  <li><strong>Don't spam.</strong> Engage genuinely in the community first.</li>
+  <li>Post your music with context ("just dropped this, looking for feedback")</li>
+  <li>Some subreddits have weekly self-promotion threads — use those</li>
+</ul>
+
+<h3>Setting Up Your Sound on TikTok</h3>
+<ol>
+  <li>Upload music through SoundOn — distributed to TikTok automatically</li>
+  <li>Go to your TikTok profile → claim your artist page</li>
+  <li>Your sounds will be linked to your profile</li>
+  <li>When you post videos, use YOUR OWN sound as the audio</li>
+  <li>When others use your sound → more streams → more money</li>
+</ol>
+<blockquote><strong>Tip:</strong> In every TikTok video caption, tell people to "use this sound" — encourages others to create videos with your music, driving more streams.</blockquote>
+
+<hr>
+
+<!-- STEP 8 -->
+<h2><span class="step-badge">Step 8</span> How You Actually Get Paid</h2>
+<h3>Streaming Revenue</h3>
+<p>Spotify + Apple Music pay per stream. Typical range: <strong>$15–$20/month per account with no promotion.</strong></p>
+
+<h3>TikTok Usage</h3>
+<p>If people use your sound → exposure increases → more streams.</p>
+
+<h3>SoundOn Payment Schedule</h3>
+<ul>
+  <li><strong>Payout:</strong> Monthly</li>
+  <li><strong>Delay:</strong> Usually 30–60 days behind actual streams</li>
+  <li><strong>Threshold:</strong> Low/accessible</li>
+</ul>
+
+<hr>
+
+<!-- STEP 9 -->
+<h2><span class="step-badge">Step 9</span> Scaling the System</h2>
+<p>Once something works: make more of THAT style, expand to more artists, stay consistent.</p>
+
+<h3>If You Run Ads ($50/month)</h3>
+<table>
+  <tr><th>Scenario</th><th>Expected Return</th></tr>
+  <tr><td>Conservative</td><td>1.5x–2x (break-even to small profit)</td></tr>
+  <tr><td>Optimized</td><td>2x–5x if content hits</td></tr>
+</table>
+<blockquote><strong>But:</strong> Ads only work if the song is good, the content is emotional, and the hook is strong. Ads amplify — they don't fix bad content.</blockquote>
+
+<hr>
+
+<!-- STEP 10 -->
+<h2><span class="step-badge">Step 10</span> Legal and Copyright (Know the Rules)</h2>
+<h3>AI Music Copyright — Where Things Stand</h3>
+<ul>
+  <li><strong>Suno Pro/Premier plans</strong> grant you commercial rights. The free tier does NOT — personal use only.</li>
+  <li>Lyrics you write (or have AI write) are your input. The melody and production are AI-generated.</li>
+  <li>Copyright law around AI music is still evolving. Most platforms accept AI-generated music without issue.</li>
+  <li><strong>Do NOT claim you wrote/produced the music yourself</strong> in official copyright registrations.</li>
+</ul>
+
+<h3>What NOT to Do</h3>
+<ul>
+  <li><strong>Don't copy existing songs.</strong> Content ID systems can flag it.</li>
+  <li><strong>Don't use real artist names</strong> in your Suno prompts.</li>
+  <li><strong>Don't upload the same song under multiple artists.</strong> Platforms detect duplicate audio.</li>
+  <li><strong>Don't use copyrighted images</strong> for cover art. Use AI-generated art or royalty-free images.</li>
+</ul>
+
+<h3>If You Get a Copyright Claim</h3>
+<ul>
+  <li>Don't panic. Review the claim — sometimes they're automated and wrong.</li>
+  <li>If it's legit (sounds too close to something), pull the track and replace it.</li>
+  <li>If it's false, dispute it through the platform (Spotify for Artists, YouTube Studio, etc.)</li>
+</ul>
+
+<hr>
+
+<!-- STEP 11 -->
+<h2><span class="step-badge">Step 11</span> Metadata (Advanced Edge)</h2>
+<p>Suno files may include generation tags, internal metadata markers, and possible AI indicators.</p>
+<ul>
+  <li><strong>Low volume users:</strong> Probably fine without cleaning</li>
+  <li><strong>Scaling users:</strong> Safer to clean metadata</li>
+</ul>
+<blockquote>Not required, but recommended for scaling safely. Use the free in-browser cleaner at <strong>phil08533.github.io/SunoGuide</strong></blockquote>
+
+<hr>
+
+<!-- Reality Check -->
+<h2>Reality Check</h2>
+<p>This is <strong>NOT</strong> instant money. But it IS:</p>
+<ul>
+  <li>Scalable</li>
+  <li>Repeatable</li>
+  <li>Low effort once the system is built</li>
+</ul>
+<h3>Total Earnings Estimate</h3>
+<p>At ~$15–$20/month over 6 months = roughly <strong>$90–$120 total.</strong></p>
+<p>Consistency starts showing results after <strong>2–3 months</strong> as platforms index your music and songs stack over time.</p>
+
+<hr>
+
+<!-- 30 DAY PLAN -->
+<h2>30-Day Plan</h2>
+<h3>Week 1</h3>
+<ul class="checklist">
+  <li>Sign up for SoundOn</li>
+  <li>Sign up for Suno (free or Pro)</li>
+  <li>Start making songs daily — aim for 5–10 per day</li>
+  <li>Create 2–3 artist identities (name + genre + vibe)</li>
+  <li>Google your artist names to make sure they're unique</li>
+  <li>Set up Canva for cover art</li>
+</ul>
+<h3>Week 2</h3>
+<ul class="checklist">
+  <li>Continue making songs — save your best ones</li>
+  <li>Build 1 album (8–12 songs) per artist</li>
+  <li>Create cover art for each album</li>
+  <li>Clean metadata on all tracks</li>
+  <li>Prepare uploads (titles, descriptions, art)</li>
+</ul>
+<h3>Week 3</h3>
+<ul class="checklist">
+  <li>Start uploading (slowly — follow the ramp-up schedule)</li>
+  <li>Claim your Spotify for Artists profile once first songs are live</li>
+  <li>Set up your SoundOn promo page for each artist</li>
+  <li>Create a TikTok account and start posting clips</li>
+  <li>Post 1–2 Reels on Instagram per artist</li>
+</ul>
+<h3>Week 4</h3>
+<ul class="checklist">
+  <li>Track what works (check Spotify for Artists + SoundOn analytics)</li>
+  <li>Double down on winning styles</li>
+  <li>Add more content — aim for 1 album per artist per week</li>
+  <li>Set up YouTube Shorts if you have bandwidth</li>
+  <li>Pitch your next release to Spotify editorial playlists (7+ days before release)</li>
+  <li>Start planning your second month's content calendar</li>
+</ul>
+
+<hr>
+
+<!-- When a Song Blows Up -->
+<h2>When a Song Blows Up (What to Do)</h2>
+<p>If one of your songs starts getting traction (100+ streams/day, TikTok videos using your sound, playlist adds):</p>
+<ol>
+  <li><strong>Double down immediately.</strong> Make more songs in that EXACT style. Same genre, same vibe, same prompt structure.</li>
+  <li><strong>Release a follow-up within 1 week.</strong> Capitalize on momentum while the algorithm is pushing you.</li>
+  <li><strong>Post more content with that song.</strong> 2–3 TikToks/Reels per day using that specific track.</li>
+  <li><strong>Check where streams are coming from</strong> in Spotify for Artists. If it's a playlist, note which one.</li>
+  <li><strong>Consider running ads</strong> ($5–$10/day on TikTok) specifically for that song while it has momentum.</li>
+  <li><strong>Don't change what's working.</strong> This isn't the time to experiment with new genres.</li>
+</ol>
+<blockquote>A single viral song can generate months of passive income. One hit pays for everything.</blockquote>
+
+<hr>
+
+<!-- Bonus -->
+<div class="bonus-box">
+  <h2 style="border-bottom:none;margin-top:0">BONUS: 10 Viral Song Ideas</h2>
+  <ol>
+    <li>POV: You finally move on</li>
+    <li>POV: They regret losing you</li>
+    <li>Gym: No excuses</li>
+    <li>Late night drive alone</li>
+    <li>You were never enough</li>
+    <li>Villain arc begins</li>
+    <li>Silent heartbreak</li>
+    <li>Trust broken</li>
+    <li>Alone but healing</li>
+    <li>They chose someone else</li>
+  </ol>
+</div>
+
+<hr>
+
+<!-- The Real Secret -->
+<h2>The Real Secret</h2>
+<p>Most people fail because:</p>
+<ul>
+  <li>They overcomplicate the music</li>
+  <li>They don't stay consistent</li>
+  <li>They never scale</li>
+</ul>
+<p><strong>You don't need talent. You need volume + consistency + strategy.</strong></p>
+<p>I made money doing this with no promotion and no audience.</p>
+<p>If you actually push this… you'll outperform me fast.</p>
+
+<hr>
+
+<!-- Footer banner -->
+<div class="site-banner" style="margin-top:32px;margin-bottom:0">
+  <span class="icon">🔗</span>
+  <span class="label">Free Companion Toolkit:</span>
+  <a href="https://phil08533.github.io/SunoGuide" target="_blank">phil08533.github.io/SunoGuide</a>
+  <span style="color:#666;margin-left:auto;font-size:9pt">Artist prompts · Metadata cleaner · AI tools · Free video creation</span>
+</div>
+
+</body>
+</html>
