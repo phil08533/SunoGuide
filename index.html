@@ -4,21 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Music Toolkit — Artist Prompts, Tools & More</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a2e;--border:#2a2a3e;--text:#e0e0e8;--text2:#8888a0;--accent:#6c5ce7;--accent2:#a855f7;--green:#10b981;--orange:#f59e0b;--red:#ef4444}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+:root{--bg:#0c0f14;--surface:#151a23;--surface2:#1c2330;--border:#2a3244;--text:#e8eaed;--text2:#8b95a5;--accent:#e8a838;--accent2:#f0c060;--green:#34d399;--orange:#f59e0b;--red:#ef4444}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}
 
 /* Nav */
-nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0.75rem 1.5rem;display:flex;align-items:center;gap:1.5rem;overflow-x:auto;white-space:nowrap}
-nav .logo{font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0}
+nav{position:sticky;top:0;z-index:100;background:rgba(12,15,20,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0.75rem 1.5rem;display:flex;align-items:center;gap:1.5rem;overflow-x:auto;white-space:nowrap}
+nav .logo{font-weight:800;font-size:1.1rem;color:var(--accent);flex-shrink:0}
 nav a.nav-link{color:var(--text2);font-size:0.85rem;font-weight:500;transition:color 0.2s}
 nav a.nav-link:hover{color:var(--text);text-decoration:none}
 
 /* Hero */
-.hero{text-align:center;padding:4rem 1.5rem 3rem;background:linear-gradient(180deg,rgba(108,92,231,0.08) 0%,transparent 100%)}
-.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:0.75rem;background:linear-gradient(135deg,#fff,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero{text-align:center;padding:4rem 1.5rem 3rem;background:linear-gradient(180deg,rgba(232,168,56,0.06) 0%,transparent 100%)}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:0.75rem;color:#fff}
 .hero p{color:var(--text2);font-size:1.1rem;max-width:600px;margin:0 auto}
 
 /* Sections */
@@ -34,7 +37,7 @@ section .subtitle{color:var(--text2);margin-bottom:2rem}
 .pills-wrap{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem}
 .pill{padding:0.45rem 1rem;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;font-size:0.85rem;font-weight:500;transition:all 0.2s;white-space:nowrap}
 .pill:hover{border-color:var(--accent);color:var(--accent)}
-.pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.pill.active{background:var(--accent);border-color:var(--accent);color:#0c0f14}
 .pill.hidden{display:none}
 .artist-count{color:var(--text2);font-size:0.9rem;margin-bottom:1rem}
 
@@ -57,8 +60,9 @@ section .subtitle{color:var(--text2);margin-bottom:2rem}
 .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
 .tool-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.2s,transform 0.2s}
 .tool-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tool-section-title{font-size:1.1rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin:2rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)}
+.tool-section-title:first-of-type{margin-top:0}
 .tool-card h3{font-size:1.05rem;margin-bottom:0.25rem}
-.tool-card .tool-cat{color:var(--accent2);font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem}
 .tool-card p{color:var(--text2);font-size:0.88rem}
 .tool-card .tool-link{display:inline-block;margin-top:0.75rem;font-size:0.85rem;font-weight:600}
 
@@ -67,7 +71,7 @@ section .subtitle{color:var(--text2);margin-bottom:2rem}
 .cleaner-box p{color:var(--text2);margin-bottom:1rem;font-size:0.95rem}
 .file-input-wrap{position:relative;display:inline-block}
 .file-input-wrap input[type=file]{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer}
-.file-input-btn{display:inline-block;padding:0.6rem 1.5rem;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;cursor:pointer;font-size:0.95rem}
+.file-input-btn{display:inline-block;padding:0.6rem 1.5rem;border-radius:8px;background:var(--accent);color:#0c0f14;font-weight:600;cursor:pointer;font-size:0.95rem}
 #cleaner-status{margin-top:1rem;color:var(--text2);font-size:0.9rem}
 #download-btn{display:none;margin-top:1rem;padding:0.6rem 1.5rem;border-radius:8px;border:none;background:var(--green);color:#fff;font-weight:600;cursor:pointer;font-size:0.95rem}
 
@@ -77,16 +81,38 @@ section .subtitle{color:var(--text2);margin-bottom:2rem}
 .feature-box p,.feature-box li{color:var(--text2);font-size:0.95rem}
 .feature-box ol,.feature-box ul{padding-left:1.25rem;margin:0.75rem 0}
 .feature-box li{margin-bottom:0.4rem}
-.feature-box .cta-btn{display:inline-block;margin-top:1rem;padding:0.6rem 1.5rem;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;font-size:0.95rem}
+.feature-box .cta-btn{display:inline-block;margin-top:1rem;padding:0.6rem 1.5rem;border-radius:8px;background:var(--accent);color:#0c0f14;font-weight:600;font-size:0.95rem}
 .feature-box .cta-btn:hover{text-decoration:none;opacity:0.9}
 
 /* Promo Page */
 .steps-list{counter-reset:steps}
 .steps-list li{counter-increment:steps;position:relative;padding-left:2.5rem;margin-bottom:1rem;color:var(--text2);font-size:0.95rem}
-.steps-list li::before{content:counter(steps);position:absolute;left:0;top:0;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700}
+.steps-list li::before{content:counter(steps);position:absolute;left:0;top:0;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--accent);color:#0c0f14;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700}
+
+/* Contact Form */
+.contact-form{max-width:500px}
+.contact-form label{display:block;font-size:0.9rem;font-weight:500;margin-bottom:0.35rem;color:var(--text)}
+.contact-form input,.contact-form textarea{width:100%;padding:0.65rem 0.9rem;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:inherit;font-size:0.95rem;margin-bottom:1rem;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--accent)}
+.contact-form textarea{min-height:120px}
+.contact-form button{padding:0.65rem 2rem;border-radius:8px;border:none;background:var(--accent);color:#0c0f14;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:inherit;transition:opacity 0.2s}
+.contact-form button:hover{opacity:0.85}
+#form-status{margin-top:0.75rem;font-size:0.9rem;color:var(--green)}
+
+/* Legal */
+.legal-section{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+.legal-section h2{font-size:1.4rem;font-weight:700;margin-bottom:0.75rem}
+.legal-section h3{font-size:1.05rem;font-weight:600;margin:1.25rem 0 0.5rem}
+.legal-section p,.legal-section li{color:var(--text2);font-size:0.9rem;line-height:1.7}
+.legal-section ul{padding-left:1.25rem;margin:0.5rem 0}
+.legal-section li{margin-bottom:0.3rem}
+.legal-divider{border:none;border-top:1px solid var(--border);margin:2rem auto;max-width:1100px}
 
 /* Footer */
 footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border);color:var(--text2);font-size:0.85rem;margin-top:2rem}
+footer a{color:var(--accent2)}
+footer .footer-links{margin-top:0.5rem}
+footer .footer-links a{margin:0 0.5rem}
 
 /* Responsive */
 @media(max-width:600px){
@@ -106,6 +132,7 @@ footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border);
     <a href="#metadata" class="nav-link">Metadata Cleaner</a>
     <a href="#video" class="nav-link">Free Videos</a>
     <a href="#promo" class="nav-link">Promo Setup</a>
+    <a href="#contact" class="nav-link">Contact</a>
     <a href="https://github.com/phil08533/SunoGuide" class="nav-link">GitHub</a>
 </nav>
 
@@ -137,96 +164,99 @@ footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border);
 <section id="tools">
     <h2>AI Tools Directory</h2>
     <p class="subtitle">Everything you need to create, edit, promote, and distribute AI music.</p>
+
+    <h3 class="tool-section-title">Create Music</h3>
     <div class="tool-grid">
         <div class="tool-card">
-            <div class="tool-cat">Music Generation</div>
             <h3>Suno</h3>
             <p>AI music generator. Enter lyrics + style tags, get full songs. Pro plan ($10/mo) gives commercial rights.</p>
             <a href="https://suno.com" class="tool-link" target="_blank" rel="noopener">suno.com &rarr;</a>
         </div>
         <div class="tool-card">
-            <div class="tool-cat">Music Generation</div>
             <h3>Udio</h3>
             <p>Alternative AI music generator. Different sound engine than Suno — good for variety and comparison.</p>
             <a href="https://udio.com" class="tool-link" target="_blank" rel="noopener">udio.com &rarr;</a>
         </div>
+    </div>
+
+    <h3 class="tool-section-title">Write Lyrics & Plan Strategy</h3>
+    <div class="tool-grid">
         <div class="tool-card">
-            <div class="tool-cat">Lyrics & Strategy</div>
             <h3>ChatGPT</h3>
             <p>Write lyrics, brainstorm song concepts, generate artist bios, plan content calendars.</p>
             <a href="https://chat.openai.com" class="tool-link" target="_blank" rel="noopener">chat.openai.com &rarr;</a>
         </div>
         <div class="tool-card">
-            <div class="tool-cat">Lyrics & Strategy</div>
             <h3>Claude</h3>
             <p>Write lyrics, develop artist identities, plan promotion strategy, analyze what's working.</p>
             <a href="https://claude.ai" class="tool-link" target="_blank" rel="noopener">claude.ai &rarr;</a>
         </div>
+    </div>
+
+    <h3 class="tool-section-title">Design Cover Art</h3>
+    <div class="tool-grid">
         <div class="tool-card">
-            <div class="tool-cat">Cover Art</div>
             <h3>Canva</h3>
             <p>Create 3000x3000 cover art with built-in AI image generator. Free tier works fine. Templates available.</p>
             <a href="https://canva.com" class="tool-link" target="_blank" rel="noopener">canva.com &rarr;</a>
         </div>
         <div class="tool-card">
-            <div class="tool-cat">Cover Art</div>
             <h3>Midjourney</h3>
             <p>Premium AI image generator. Creates stunning album art from text prompts. Paid plans only.</p>
             <a href="https://midjourney.com" class="tool-link" target="_blank" rel="noopener">midjourney.com &rarr;</a>
         </div>
         <div class="tool-card">
-            <div class="tool-cat">Cover Art</div>
             <h3>DALL-E (ChatGPT)</h3>
             <p>AI image generation built into ChatGPT. Great for quick cover art. Included with ChatGPT Plus.</p>
             <a href="https://chat.openai.com" class="tool-link" target="_blank" rel="noopener">chat.openai.com &rarr;</a>
         </div>
         <div class="tool-card">
-            <div class="tool-cat">Cover Art</div>
             <h3>Remove.bg</h3>
             <p>Remove backgrounds from images instantly. Useful for cleaning up AI-generated art for covers.</p>
             <a href="https://remove.bg" class="tool-link" target="_blank" rel="noopener">remove.bg &rarr;</a>
         </div>
+    </div>
+
+    <h3 class="tool-section-title">Edit Audio & Video</h3>
+    <div class="tool-grid">
         <div class="tool-card">
-            <div class="tool-cat">Video & Editing</div>
+            <h3>Audacity</h3>
+            <p>Free open-source audio editor. Trim songs, clean audio, adjust levels. Works on all platforms.</p>
+            <a href="https://audacityteam.org" class="tool-link" target="_blank" rel="noopener">audacityteam.org &rarr;</a>
+        </div>
+        <div class="tool-card">
             <h3>CapCut</h3>
             <p>Free video editor from TikTok. Add text overlays, effects, and your music. Desktop + mobile.</p>
             <a href="https://capcut.com" class="tool-link" target="_blank" rel="noopener">capcut.com &rarr;</a>
         </div>
         <div class="tool-card">
-            <div class="tool-cat">Video & Editing</div>
             <h3>TikTok Creative Studio</h3>
             <p>Free AI video creation tool. Turn images/text into videos. No editing skills needed. Perfect for promos.</p>
             <a href="https://ads.tiktok.com/creative/creativestudio/image-to-video?subApp=CreativeStudio/MiniApp/TextToVideo" class="tool-link" target="_blank" rel="noopener">TikTok Creative Studio &rarr;</a>
         </div>
         <div class="tool-card">
-            <div class="tool-cat">Voice</div>
             <h3>ElevenLabs</h3>
             <p>AI voice generation and cloning. Create voiceovers for promo videos or intros for your tracks.</p>
             <a href="https://elevenlabs.io" class="tool-link" target="_blank" rel="noopener">elevenlabs.io &rarr;</a>
         </div>
+    </div>
+
+    <h3 class="tool-section-title">Distribute & Grow</h3>
+    <div class="tool-grid">
         <div class="tool-card">
-            <div class="tool-cat">Distribution</div>
             <h3>SoundOn</h3>
             <p>Free music distribution to Spotify, Apple Music, TikTok, and more. Best TikTok integration.</p>
             <a href="https://soundon.global" class="tool-link" target="_blank" rel="noopener">soundon.global &rarr;</a>
         </div>
         <div class="tool-card">
-            <div class="tool-cat">Distribution</div>
             <h3>DistroKid</h3>
             <p>$22.99/year for unlimited uploads. Fast delivery to all platforms. Popular alternative to SoundOn.</p>
             <a href="https://distrokid.com" class="tool-link" target="_blank" rel="noopener">distrokid.com &rarr;</a>
         </div>
         <div class="tool-card">
-            <div class="tool-cat">Analytics</div>
             <h3>Spotify for Artists</h3>
             <p>Claim your artist profile, pitch to playlists, track streams and listener demographics. Free.</p>
             <a href="https://artists.spotify.com" class="tool-link" target="_blank" rel="noopener">artists.spotify.com &rarr;</a>
-        </div>
-        <div class="tool-card">
-            <div class="tool-cat">Audio Editing</div>
-            <h3>Audacity</h3>
-            <p>Free open-source audio editor. Trim songs, clean audio, adjust levels. Works on all platforms.</p>
-            <a href="https://audacityteam.org" class="tool-link" target="_blank" rel="noopener">audacityteam.org &rarr;</a>
         </div>
     </div>
 </section>
@@ -333,8 +363,85 @@ footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border);
     </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p class="subtitle">Have a question, suggestion, or just want to say hi? Send us a message.</p>
+    <form class="contact-form" action="https://formsubmit.co/creatitproductions@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="AI Music Toolkit — New Message">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://phil08533.github.io/SunoGuide/">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Your name" required>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="your@email.com" required>
+        <label for="message">Message</label>
+        <textarea name="message" id="message" placeholder="What's on your mind?" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<hr class="legal-divider">
+
+<!-- PRIVACY POLICY -->
+<div class="legal-section" id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>Last updated: March 2026</p>
+
+    <h3>What We Collect</h3>
+    <p>This site is a static website hosted on GitHub Pages. We do not use cookies, tracking pixels, or analytics scripts. The only data we collect is what you voluntarily submit through our contact form (name, email, and message).</p>
+
+    <h3>Contact Form</h3>
+    <p>When you submit the contact form, your information is sent to us via FormSubmit.co, a third-party form processing service. We use this data only to respond to your inquiry. We do not sell, share, or distribute your contact information to any third parties.</p>
+
+    <h3>Metadata Cleaner</h3>
+    <p>The Audio Metadata Cleaner runs entirely in your browser. No audio files are uploaded to any server. All processing happens locally on your device.</p>
+
+    <h3>GitHub API</h3>
+    <p>The Artist Prompts section fetches public data from the GitHub API. No personal information is transmitted during this process.</p>
+
+    <h3>Third-Party Links</h3>
+    <p>This site contains links to third-party tools and services (Suno, SoundOn, Canva, etc.). We are not responsible for the privacy practices of these external sites. Please review their individual privacy policies.</p>
+</div>
+
+<hr class="legal-divider">
+
+<!-- TERMS OF USE -->
+<div class="legal-section" id="terms">
+    <h2>Terms of Use</h2>
+    <p>Last updated: March 2026</p>
+
+    <h3>Use of This Site</h3>
+    <p>This site provides educational information and tools for AI music creation. The content is provided "as is" for informational purposes. We make no guarantees about earnings, results, or outcomes from following any advice or strategies described here.</p>
+
+    <h3>AI-Generated Music</h3>
+    <p>You are responsible for ensuring your use of AI music generation tools complies with each platform's terms of service. Copyright law around AI-generated content is evolving — stay informed and use AI tools responsibly.</p>
+
+    <h3>Artist Prompts</h3>
+    <p>The artist sound-alike prompts are descriptive style guides meant to help you create original music. They do not contain copyrighted material. Do not use actual artist names in AI generation tools.</p>
+
+    <h3>No Warranty</h3>
+    <p>All tools, guides, and information are provided without warranty of any kind. We are not liable for any damages arising from the use of this site or the strategies described herein.</p>
+</div>
+
+<hr class="legal-divider">
+
+<!-- LICENSE -->
+<div class="legal-section" id="license">
+    <h2>License</h2>
+    <p>The content of this project (guides, text, prompts) is licensed under the <strong>Creative Commons Attribution 4.0 International License (CC BY 4.0)</strong>. You are free to share and adapt the material for any purpose, including commercially, as long as you give appropriate credit.</p>
+    <p style="margin-top:0.5rem">The source code of this website is licensed under the <strong>MIT License</strong>. See the <a href="https://github.com/phil08533/SunoGuide">GitHub repository</a> for details.</p>
+</div>
+
 <footer>
     <p>AI Music Toolkit &mdash; Companion site to the <a href="https://github.com/phil08533/SunoGuide">AI Music Money Blueprint</a></p>
+    <div class="footer-links">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#license">License</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/phil08533/SunoGuide">GitHub</a>
+    </div>
     <p style="margin-top:0.5rem">Add artist prompts: drop .txt files in the <code>artists/</code> folder — filename = artist name, content = Suno prompt</p>
 </footer>
 
