@@ -92,7 +92,7 @@ Use **Custom mode** for full control. This is where you enter your own lyrics an
 
 > *The Suno creation screen lets you enter lyrics, choose styles, and select the model version. Use Custom mode for best results.*
 
-<!-- Add your own screenshot of the Suno custom creation screen here -->
+<!-- TODO: Add screenshot of the Suno custom creation screen (Advanced mode with Lyrics + Styles boxes) -->
 
 ### How to Write Prompts
 
@@ -282,6 +282,10 @@ Why:
 
 Canva has a built-in **AI image generator** — you don't need Midjourney or DALL-E for cover art.
 
+> *Example cover art created with AI — "Orbital Glaze: Small Times". A simple AI-generated image with artist name and album title in matching fonts.*
+
+![Example AI-generated cover art — Orbital Glaze: Small Times](images/cover-art-example.jpg)
+
 **Step-by-step:**
 
 1. Open Canva → Create custom size: **3000 x 3000 px**
@@ -301,7 +305,7 @@ Canva has a built-in **AI image generator** — you don't need Midjourney or DAL
 
 > *Your SoundOn promo page lets you set up artist profiles, add social links, choose song previews, and customize your bio. Each artist gets their own page.*
 
-<!-- Add your own screenshot of the SoundOn promo page here -->
+<!-- TODO: Add screenshots of SoundOn promo page, artist profile setup, and release details -->
 
 ---
 
@@ -370,11 +374,27 @@ How to use it:
 4. Generate a professional-looking video for free
 5. Download and add your song as background audio
 
+> *The TikTok Creative Studio text-to-video prompt — just describe the video you want and it generates it for free.*
+
+![TikTok Creative Studio text-to-video prompt interface](images/tiktok-creative-studio-prompt.jpg)
+
+> *Browse templates and trending styles for inspiration before creating your own.*
+
+![TikTok Creative Studio template gallery](images/tiktok-creative-studio-templates.jpg)
+
+> *AI-generated concert videos from a simple text prompt — no editing skills needed.*
+
+![TikTok Creative Studio generated concert videos](images/tiktok-creative-studio-videos.jpg)
+
 **Where to post these videos:**
 - TikTok
 - Instagram Reels
 - Facebook Reels
 - Reddit
+
+> *Select your AI-generated videos from your camera roll and post directly to TikTok.*
+
+![Selecting AI-generated videos to post on TikTok](images/tiktok-posting-select-videos.jpg)
 
 This is a game-changer if you don't have video editing skills. You get professional content for free that you can pair with your music.
 
@@ -404,6 +424,14 @@ Once SoundOn distributes your music to TikTok:
 3. Your sounds will be linked to your profile
 4. When you post videos, use YOUR OWN sound as the audio
 5. When others use your sound → more streams → more money
+
+> *Your pinned sounds in TikTok Studio — showing songs distributed through SoundOn that are now available as TikTok sounds. Pin your best songs so they appear first on your profile.*
+
+![TikTok Studio showing pinned music sounds](images/tiktok-sounds-pinned.jpg)
+
+> *The TikTok sound browser — this is where users discover trending sounds. Getting your song used in videos puts it in front of more people.*
+
+![TikTok trending sounds browser](images/tiktok-trending-sounds.jpg)
 
 > **Tip:** In every TikTok video caption, tell people to "use this sound" — this encourages others to create videos with your music, which drives streams.
 
